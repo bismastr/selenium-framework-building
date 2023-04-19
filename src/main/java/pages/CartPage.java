@@ -22,7 +22,7 @@ public class CartPage extends AbstractComponent {
         return match;
     }
 
-    public CheckoutPage goToCheckout(){
+    public CheckOutPage goToCheckout(){
         checkoutEle.click();
         return new CheckOutPage(driver);
     }

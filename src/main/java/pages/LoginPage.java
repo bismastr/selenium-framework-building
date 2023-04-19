@@ -25,14 +25,22 @@ public class LoginPage extends AbstractComponent {
     @FindBy(id="login")
     WebElement btnLogin;
 
+    @FindBy(xpath = "//div[@aria-label='Incorrect email or password.']")
+    WebElement errorMessage;
+
     public ProductCataloguePage loginWeb(String email, String password){
         inptEmail.sendKeys(email);
-        inptEmail .sendKeys(password);
+        inptPassword.sendKeys(password);
         btnLogin.click();
         return new ProductCataloguePage(driver);
     }
 
+    public String getErrorMessage(){
+        waitWebElementToAppear(errorMessage);
+        return errorMessage.getText();
+    }
+
     public void goTo(){
-        driver.get("htpps://rahulshettyacademy.com/client");
+        driver.get("https://rahulshettyacademy.com/client");
     }
 }
