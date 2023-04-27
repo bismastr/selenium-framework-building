@@ -7,6 +7,8 @@ import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
 
 import java.time.Duration;
@@ -48,13 +50,13 @@ public class BaseTest {
         return driver;
     }
 
-    @BeforeAll
+   @BeforeMethod
     public void bf() {
         setDriver();
         loginPage = new LoginPage(getDriver());
     }
 
-    @AfterAll
+    @AfterMethod
     public void af(){
         driver.close();
     }

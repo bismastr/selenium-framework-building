@@ -18,14 +18,14 @@ public class ProductCataloguePage extends AbstractComponent {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css=".mb3")
+    @FindBy(css=".mb-3")
     List<WebElement> products;
 
-    @FindBy(css="..ng-animating")
+    @FindBy(css=".ng-animating")
     WebElement spinner;
 
-    By byProducts = By.cssSelector(".mb3");
-    By addToCart = By.cssSelector("card-body button:last-of-type");
+    By byProducts = By.cssSelector(".mb-3");
+    By addToCart = By.cssSelector(".card-body button:last-of-type");
     By toast = By.cssSelector("#toast-container");
 
     public List<WebElement> getProductList(){

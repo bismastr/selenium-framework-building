@@ -25,7 +25,7 @@ public class LoginPage extends AbstractComponent {
     @FindBy(id="login")
     WebElement btnLogin;
 
-    @FindBy(xpath = "//div[@aria-label='Incorrect email or password.']")
+    @FindBy(css = ".toast-error")
     WebElement errorMessage;
 
     public ProductCataloguePage loginWeb(String email, String password){

@@ -20,7 +20,7 @@ public class CheckOutPage extends AbstractComponent {
     @FindBy(css = "[placeholder='Select Country'")
     WebElement country;
 
-    @FindBy(css = ".action_submit")
+    @FindBy(css = ".action__submit")
     WebElement submit;
 
     @FindBy(xpath = "//button[contains(@class, 'ta-item')][2]")
