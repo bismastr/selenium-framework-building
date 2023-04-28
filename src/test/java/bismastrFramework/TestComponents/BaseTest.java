@@ -50,13 +50,13 @@ public class BaseTest {
         return driver;
     }
 
-   @BeforeMethod
+   @BeforeMethod(alwaysRun = true)
     public void bf() {
         setDriver();
         loginPage = new LoginPage(getDriver());
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void af(){
         driver.close();
     }

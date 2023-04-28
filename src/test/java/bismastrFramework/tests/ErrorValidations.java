@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class ErrorValidations extends BaseTest {
 
-    @Test
+    @Test(groups = {"ErrorHandling"})
     public void loginError(){
         loginPage.goTo();
         loginPage.loginWeb("anshika@gmail.com", "sadad");
