@@ -22,6 +22,8 @@ public class AbstractComponent {
     @FindBy(css = "[routerlink*='myorders']")
     WebElement orderHead;
 
+
+
     public AbstractComponent(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));

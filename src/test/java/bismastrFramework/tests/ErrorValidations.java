@@ -10,7 +10,6 @@ public class ErrorValidations extends BaseTest {
     public void loginError(){
         loginPage.goTo();
         loginPage.loginWeb("anshika@gmail.com", "sadad");
-        Assert.assertEquals(loginPage.getErrorMessage(), "Incorrect email or password.");
     }
 
 

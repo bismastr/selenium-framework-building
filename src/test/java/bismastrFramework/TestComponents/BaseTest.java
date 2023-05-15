@@ -2,51 +2,50 @@ package bismastrFramework.TestComponents;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BaseTest {
 
     public WebDriver driver;
     public LoginPage loginPage;
 
-    public WebDriver initDriver() {
+    public void setDriver() throws IOException {
 
-//        Properties prop = new Properties();
-//        FileInputStream file = new FileInputStream(System.getProperty("user.dir")+"//src//main//java//resources//GlobalData.properties");
-//        prop.load(file);
-//        String browserName = prop.getProperty("browser");
-        String browserName = "chrome";
+        Properties prop = new Properties();
+        FileInputStream fis = new FileInputStream(System.getProperty("user.dir")
+        + "//src//main//java//resources//GlobalData.properties");
+        prop.load(fis);
 
-        if (browserName.equalsIgnoreCase("chrome")){
+        String browser = System.getProperty("browser")!= null ? System.getProperty("browser") : prop.getProperty("browser");
+
+        if (browser.equalsIgnoreCase("chrome")){
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
-        } else if (browserName.equalsIgnoreCase("firefox")) {
-            WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
+        } else if (browser.equalsIgnoreCase("firefox")){
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+            System.out.println("Firefox");
+        } else if (browser.equalsIgnoreCase("edge")){
+            WebDriverManager.edgedriver().setup();
+            driver = new EdgeDriver();
         }
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
-        return driver;
-    }
-
-    public void setDriver(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
     }
@@ -64,7 +63,7 @@ public class BaseTest {
     }
 
    @BeforeMethod(alwaysRun = true)
-    public void bf() {
+    public void bf() throws IOException {
         setDriver();
         loginPage = new LoginPage(getDriver());
     }
