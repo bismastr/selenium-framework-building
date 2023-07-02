@@ -23,7 +23,7 @@ public class SubmitOrder extends BaseTest {
         Boolean match = cartPage.VerifyProductDisplay(input.get("product"));
         Assert.assertTrue(match);
         CheckOutPage checkOutPage = cartPage.goToCheckout();
-        checkOutPage.selectCountry("india");
+        checkOutPage.selectCountry("indonesia");
         ConfirmationPage confirmationPage = checkOutPage.submitOrder();
     }
 

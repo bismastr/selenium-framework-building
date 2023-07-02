@@ -14,3 +14,14 @@ Feature: PurchaseOrder
       | rahulshetty@gmail.com | Iamking@000 | ZARA COAT 3 |
 
 
+  #Database
+  #Validation Data from Database
+  #Get Data for credentials
+
+  #Reusable Steps
+
+  #Reporting
+
+  #Implement using CS/HR m2
+
+  #
